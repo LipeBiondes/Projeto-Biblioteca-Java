@@ -4,9 +4,11 @@ import beans.Aluno;
 import beans.Livro;
 import beans.Emprestimo;
 import conexao.Conexao;
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,8 +16,8 @@ import javax.swing.JOptionPane;
  * @author Alefe Filipe
  */
 public class BibliotecaDAO {
-  private Conexao conexao;
-  private Connection conn;
+  private final Conexao conexao;
+  private final Connection conn;
 
   public BibliotecaDAO() {
     this.conexao = new Conexao();
@@ -32,23 +34,24 @@ public class BibliotecaDAO {
       stmt.setString(4, aluno.getSexo());
       stmt.execute();
       JOptionPane.showMessageDialog(null, "Sucesso ao inserir dados!");
-    } catch (Exception e) {
+    } catch (HeadlessException | SQLException e) {
       System.out.println("Erro ao inserir Aluno: " + e);
       JOptionPane.showMessageDialog(null, "Erro ao inserir dados!");
     }
   }
 
   public void inserirLivro(Livro livro) {
-    String sql = "INSERT INTO livro(titulo,genero,autor,status) VALUES" + "(?, ?, ?, ?)";
+    String sql = "INSERT INTO livro(titulo,genero,autor,status,qtd) VALUES" + "(?, ?, ?, ?,?)";
     try {
       PreparedStatement stmt = this.conn.prepareStatement(sql);
       stmt.setString(1, livro.getTitulo());
       stmt.setString(2, livro.getGenero());
       stmt.setString(3, livro.getAutor());
       stmt.setInt(4, livro.getStatus());
+      stmt.setInt(5, livro.getQtd());
       stmt.execute();
       JOptionPane.showMessageDialog(null, "Sucesso ao inserir dados!");
-    } catch (Exception e) {
+    } catch (HeadlessException | SQLException e) {
       System.out.println("Erro ao inserir Livro: " + e);
       JOptionPane.showMessageDialog(null, "Erro ao inserir dados!");
     }
@@ -64,7 +67,7 @@ public class BibliotecaDAO {
       stmt.setString(4, emprestimo.getDataD());
       stmt.execute();
       JOptionPane.showMessageDialog(null, "Sucesso ao inserir dados!");
-    } catch (Exception e) {
+    } catch (HeadlessException | SQLException e) {
       System.out.println("Erro ao inserir Emprestimo: " + e);
       JOptionPane.showMessageDialog(null, "Erro ao inserir dados!");
     }

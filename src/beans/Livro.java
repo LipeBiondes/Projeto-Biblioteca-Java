@@ -4,8 +4,16 @@ package beans;
  * @author Alefe Filipe
  */
 public class Livro {
-    private int id, status;
+    private int id, status,qtd;
     private String titulo, genero, autor;
+
+    public int getQtd() {
+        return qtd;
+    }
+
+    public void setQtd(int qtd) {
+        this.qtd = qtd;
+    }
 
     public int getId() {
         return id;
