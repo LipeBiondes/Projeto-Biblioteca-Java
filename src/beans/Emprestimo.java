@@ -4,8 +4,16 @@ package beans;
  * @author Alefe Filipe
  */
 public class Emprestimo {
-    private int id, id_aluno, id_livro;
+    private int id, id_aluno, id_livro, id_adm;
     private String dataP, dataD;
+
+    public int getId_adm() {
+        return id_adm;
+    }
+
+    public void setId_adm(int id_adm) {
+        this.id_adm = id_adm;
+    }
 
     public int getId() {
         return id;

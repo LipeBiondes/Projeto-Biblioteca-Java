@@ -1,5 +1,6 @@
 package dao;
 
+import beans.Adm;
 import beans.Aluno;
 import beans.Livro;
 import beans.Emprestimo;
@@ -58,13 +59,14 @@ public class BibliotecaDAO {
   }
 
   public void inserirEmprestimo(Emprestimo emprestimo) {
-    String sql = "INSERT INTO emprestimo(id_aluno,id_livro,dataP,dataD) VALUES" + "(?, ?, ?, ?)";
+    String sql = "INSERT INTO emprestimo(id_aluno, id_livro, id_adm, dataP, dataD) VALUES" + "(?, ?, ?, ?, ?)";
     try {
       PreparedStatement stmt = this.conn.prepareStatement(sql);
       stmt.setInt(1, emprestimo.getId_aluno());
       stmt.setInt(2, emprestimo.getId_livro());
-      stmt.setString(3, emprestimo.getDataP());
-      stmt.setString(4, emprestimo.getDataD());
+      stmt.setInt(3, emprestimo.getId_adm());
+      stmt.setString(4, emprestimo.getDataP());
+      stmt.setString(5, emprestimo.getDataD());
       stmt.execute();
       JOptionPane.showMessageDialog(null, "Sucesso ao inserir dados!");
     } catch (HeadlessException | SQLException e) {
@@ -72,5 +74,18 @@ public class BibliotecaDAO {
       JOptionPane.showMessageDialog(null, "Erro ao inserir dados!");
     }
   }
-
+  
+ public void inserirAdm(Adm adm) {
+    String sql = "INSERT INTO adm(login, senha) VALUES" + "(?, ?)";
+        try {
+         PreparedStatement stmt = this.conn.prepareStatement(sql);
+         stmt.setString(1, adm.getLogin());
+         stmt.setString(2, adm.getSenha());
+         stmt.execute();
+         JOptionPane.showMessageDialog(null, "Sucesso ao inserir dados!");
+     } catch (HeadlessException | SQLException e) {
+         System.out.println("Erro ao inserir Emprestimo: " + e);
+         JOptionPane.showMessageDialog(null, "Erro ao inserir dados!");
+     }
+    }
 }
