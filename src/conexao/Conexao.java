@@ -16,7 +16,7 @@ public class Conexao {
                     "jdbc:mysql://localhost:3306/biblioteca",
                     "root",
                     "12345678");
-            System.out.println("SUCESSO PORRA!");
+            System.out.println("SUCESSO!");
             Statement stmt = conn.createStatement();
             return conn;
         } catch (SQLException e) {

@@ -4,7 +4,7 @@ package beans;
  * @author Alefe Filipe
  */
 public class Emprestimo {
-    private int id, id_aluno, id_livro, id_adm;
+    private int id, id_aluno, id_livro, id_adm, status;
     private String dataP, dataD;
 
     public int getId_adm() {
@@ -13,6 +13,14 @@ public class Emprestimo {
 
     public void setId_adm(int id_adm) {
         this.id_adm = id_adm;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public int getId() {
