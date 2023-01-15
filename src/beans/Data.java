@@ -9,7 +9,8 @@ package beans;
  * @author Alefe Filipe
  */
 public class Data {
-    String data_hoje, data_devolver;
+
+    private String data_hoje, data_devolver;
 
     public String getData_hoje() {
         return data_hoje;

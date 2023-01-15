@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
  * @author Alefe Filipe
  */
 public class Cadastro extends javax.swing.JFrame {
+
     /**
      * Creates new form Cadastro
      */
@@ -21,6 +22,7 @@ public class Cadastro extends javax.swing.JFrame {
         initComponents();
         Cadastro.this.setExtendedState(MAXIMIZED_BOTH);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -101,8 +103,8 @@ public class Cadastro extends javax.swing.JFrame {
         String email = txtEmail.getText();
         String senha = new String(txtSenha.getPassword());
         String confSenha = new String(txtConfSenha.getPassword());
-        
-        if ("".equals(email) || "".equals(senha ) || "".equals(confSenha)) {
+
+        if ("".equals(email) || "".equals(senha) || "".equals(confSenha)) {
             JOptionPane.showMessageDialog(null, "Campos em branco, preencha");
             txtEmail.setText("");
             txtSenha.setText("");
@@ -120,11 +122,11 @@ public class Cadastro extends javax.swing.JFrame {
                 txtEmail.setText("");
                 txtSenha.setText("");
                 txtConfSenha.setText("");
-                
+
                 Home home = new Home();
                 home.setVisible(true);
                 Cadastro.this.dispose();
-                
+
             } else {
                 JOptionPane.showMessageDialog(null, "Senhas não conferem");
                 txtSenha.setText("");

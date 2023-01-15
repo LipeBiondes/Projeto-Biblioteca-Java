@@ -17,7 +17,7 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     public Login() {
-        initComponents();   
+        initComponents();
     }
 
     /**
@@ -130,24 +130,24 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         String login = txtEmail.getText();
         String senha = new String(txtSenha.getPassword());
-        
+
         BibliotecaDAO biblioteca = new BibliotecaDAO();
         Adm adm = biblioteca.auntenticarUsuario(login, senha);
-        
+
         if (adm != null) {
             String login_banco = adm.getLogin();
             String senha_banco = adm.getSenha();
             if ((login_banco.equals(login)) && (senha_banco.equals(senha))) {
-            System.out.println("Login feito com sucesso!");
-            Home home = new Home();
-            home.setVisible(true);
-            Login.this.dispose();
-        }
+                System.out.println("Login feito com sucesso!");
+                Home home = new Home();
+                home.setVisible(true);
+                Login.this.dispose();
+            }
         } else {
             System.out.println("Email ou senha incorretos");
         }
-        
-        
+
+
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked

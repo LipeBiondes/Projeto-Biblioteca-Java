@@ -4,6 +4,7 @@ package beans;
  * @author Alefe Filipe
  */
 public class Aluno {
+
     private int id, livros_pegados;
     private String nome, endereco, telefone, cpf;
 
@@ -22,7 +23,7 @@ public class Aluno {
     public void setLivros_pegados(int livros_pegados) {
         this.livros_pegados = livros_pegados;
     }
-    
+
     public String getNome() {
         return nome;
     }

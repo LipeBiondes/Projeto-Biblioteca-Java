@@ -5,6 +5,7 @@ package beans;
  * @author Alefe Filipe
  */
 public class Adm {
+
     private int id;
     private String login, senha;
 
@@ -31,5 +32,5 @@ public class Adm {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
+
 }

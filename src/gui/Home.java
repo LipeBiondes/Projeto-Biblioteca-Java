@@ -1,12 +1,15 @@
 package gui;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
 /**
  *
  * @author Alefe Filipe
  */
 public class Home extends javax.swing.JFrame {
+
     /**
      * Creates new form Home
      */
@@ -32,9 +35,6 @@ public class Home extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/fundo.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -77,14 +77,6 @@ public class Home extends javax.swing.JFrame {
         });
         getContentPane().add(jButton7);
         jButton7.setBounds(340, 300, 160, 29);
-
-        jMenu1.setText("Menu");
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Editar");
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
 
         setSize(new java.awt.Dimension(900, 499));
         setLocationRelativeTo(null);
@@ -140,9 +132,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
