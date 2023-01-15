@@ -26,13 +26,14 @@ public class BibliotecaDAO {
   }
 
   public void inserirAluno(Aluno aluno) {
-    String sql = "INSERT INTO aluno(nome,endereco,telefone,sexo) VALUES" + "(?, ?, ?, ?)";
+    String sql = "INSERT INTO aluno(nome,endereco,telefone,cpf, livros_pegados) VALUES" + "(?, ?, ?, ?, ?)";
     try {
       PreparedStatement stmt = this.conn.prepareStatement(sql);
       stmt.setString(1, aluno.getNome());
       stmt.setString(2, aluno.getEndereco());
       stmt.setString(3, aluno.getTelefone());
-      stmt.setString(4, aluno.getSexo());
+      stmt.setString(4, aluno.getCpf());
+      stmt.setInt(5, 0);
       stmt.execute();
       JOptionPane.showMessageDialog(null, "Sucesso ao inserir dados!");
     } catch (HeadlessException | SQLException e) {

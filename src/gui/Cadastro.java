@@ -45,7 +45,7 @@ public class Cadastro extends javax.swing.JFrame {
 
         jLabel1.setText("Cadastro");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(350, 40, 80, 40);
+        jLabel1.setBounds(280, 40, 80, 40);
 
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -53,17 +53,17 @@ public class Cadastro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtEmail);
-        txtEmail.setBounds(310, 80, 180, 40);
+        txtEmail.setBounds(240, 80, 180, 40);
 
         jLabel2.setText("Email:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(230, 90, 70, 40);
+        jLabel2.setBounds(160, 90, 70, 40);
 
         jLabel3.setText("Senha:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(230, 130, 70, 40);
+        jLabel3.setBounds(160, 130, 70, 40);
         getContentPane().add(txtSenha);
-        txtSenha.setBounds(310, 130, 180, 40);
+        txtSenha.setBounds(240, 130, 180, 40);
 
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -72,13 +72,13 @@ public class Cadastro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnCadastrar);
-        btnCadastrar.setBounds(390, 230, 120, 50);
+        btnCadastrar.setBounds(320, 230, 120, 50);
         getContentPane().add(txtConfSenha);
-        txtConfSenha.setBounds(310, 180, 180, 40);
+        txtConfSenha.setBounds(240, 180, 180, 40);
 
         jLabel4.setText("Confirmar Senha:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(170, 170, 130, 40);
+        jLabel4.setBounds(100, 170, 130, 40);
 
         btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +87,7 @@ public class Cadastro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnVoltar);
-        btnVoltar.setBounds(270, 230, 100, 50);
+        btnVoltar.setBounds(200, 230, 100, 50);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

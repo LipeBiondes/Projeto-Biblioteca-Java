@@ -28,12 +28,9 @@ public class Home extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -48,24 +45,19 @@ public class Home extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jButton1.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
-        jButton1.setText("Cadastrar Livro");
+        jButton1.setText("Livro");
         getContentPane().add(jButton1);
-        jButton1.setBounds(340, 190, 155, 29);
+        jButton1.setBounds(340, 220, 160, 29);
 
         jButton2.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
-        jButton2.setText("Cadastrar Aluno");
+        jButton2.setText("Aluno");
         getContentPane().add(jButton2);
-        jButton2.setBounds(340, 230, 155, 29);
-
-        jButton3.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
-        jButton3.setText(" Devolver Livro");
-        getContentPane().add(jButton3);
-        jButton3.setBounds(340, 310, 155, 29);
+        jButton2.setBounds(340, 180, 160, 29);
 
         jButton4.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
-        jButton4.setText("Pegar Livro Emprestado");
+        jButton4.setText("Emprestimo");
         getContentPane().add(jButton4);
-        jButton4.setBounds(320, 400, 192, 29);
+        jButton4.setBounds(340, 260, 160, 29);
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 255));
 
@@ -74,27 +66,17 @@ public class Home extends javax.swing.JFrame {
         jPanel1.add(jLabel2);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(540, 60, 150, 110);
-
-        jButton6.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
-        jButton6.setText("Consultar Livros");
-        getContentPane().add(jButton6);
-        jButton6.setBounds(340, 270, 155, 29);
-
-        jButton5.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
-        jButton5.setText(" Devolver Livro");
-        getContentPane().add(jButton5);
-        jButton5.setBounds(340, 310, 155, 29);
+        jPanel1.setBounds(40, 40, 150, 110);
 
         jButton7.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
-        jButton7.setText("Gerar relatorio");
+        jButton7.setText("Relatorio");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton7);
-        jButton7.setBounds(340, 350, 155, 29);
+        jButton7.setBounds(340, 300, 160, 29);
 
         jMenu1.setText("Menu");
         jMenuBar1.add(jMenu1);
@@ -154,10 +136,7 @@ public class Home extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
