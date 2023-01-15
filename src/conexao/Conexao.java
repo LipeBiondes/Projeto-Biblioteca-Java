@@ -2,6 +2,7 @@ package conexao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
@@ -18,7 +19,7 @@ public class Conexao {
             System.out.println("SUCESSO PORRA!");
             Statement stmt = conn.createStatement();
             return conn;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Erro ao conectar: " + e.getMessage());
             return null;
         }

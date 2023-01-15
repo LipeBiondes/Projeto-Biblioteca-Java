@@ -88,4 +88,23 @@ public class BibliotecaDAO {
          JOptionPane.showMessageDialog(null, "Erro ao inserir dados!");
      }
     }
+ 
+ public Adm auntenticarUsuario(String login, String senha){
+     String sql = "SELECT * FROM `adm` WHERE login = ? AND senha = ?";
+     try {
+         PreparedStatement stmt = this.conn.prepareStatement(sql);
+         stmt.setString(1, login);
+         stmt.setString(2, senha);
+         ResultSet rs = stmt.executeQuery();
+         Adm adm = new Adm();
+         
+         rs.first();
+         adm.setLogin(rs.getString("login"));
+         adm.setSenha(rs.getString("senha"));
+         return adm;
+     } catch (SQLException e) {
+         System.out.println("Erro ao consultar adm" + e);
+         return null;
+     }
+ }
 }

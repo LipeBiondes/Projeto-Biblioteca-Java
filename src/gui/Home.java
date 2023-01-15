@@ -12,6 +12,7 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
+        Home.this.setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**
@@ -24,55 +25,92 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/fundo.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1366, 768));
+        setSize(new java.awt.Dimension(1200, 800));
         getContentPane().setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel2.setText("Biblioteca");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(270, 40, 78, 24);
-
+        jButton1.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
         jButton1.setText("Cadastrar Livro");
         getContentPane().add(jButton1);
-        jButton1.setBounds(223, 171, 155, 22);
+        jButton1.setBounds(340, 190, 155, 29);
 
+        jButton2.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
         jButton2.setText("Cadastrar Aluno");
         getContentPane().add(jButton2);
-        jButton2.setBounds(223, 199, 155, 22);
+        jButton2.setBounds(340, 230, 155, 29);
 
-        jButton3.setText("Consultar Livros");
+        jButton3.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
+        jButton3.setText(" Devolver Livro");
         getContentPane().add(jButton3);
-        jButton3.setBounds(223, 227, 155, 22);
+        jButton3.setBounds(340, 310, 155, 29);
 
+        jButton4.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
         jButton4.setText("Pegar Livro Emprestado");
         getContentPane().add(jButton4);
-        jButton4.setBounds(223, 255, 155, 22);
+        jButton4.setBounds(320, 400, 192, 29);
 
-        jButton5.setText("Devolver Livro");
+        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
+
+        jLabel2.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 24)); // NOI18N
+        jLabel2.setText("Biblioteca");
+        jPanel1.add(jLabel2);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(540, 60, 150, 110);
+
+        jButton6.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
+        jButton6.setText("Consultar Livros");
+        getContentPane().add(jButton6);
+        jButton6.setBounds(340, 270, 155, 29);
+
+        jButton5.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
+        jButton5.setText(" Devolver Livro");
         getContentPane().add(jButton5);
-        jButton5.setBounds(223, 283, 155, 22);
+        jButton5.setBounds(340, 310, 155, 29);
+
+        jButton7.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
+        jButton7.setText("Gerar relatorio");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton7);
+        jButton7.setBounds(340, 350, 155, 29);
 
         jMenu1.setText("Menu");
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Editar");
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
-        pack();
+        setSize(new java.awt.Dimension(900, 499));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,9 +157,13 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
