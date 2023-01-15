@@ -2,6 +2,7 @@ package dao;
 
 import beans.Adm;
 import beans.Aluno;
+import beans.Data;
 import beans.Livro;
 import beans.Emprestimo;
 import conexao.Conexao;
@@ -10,6 +11,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -108,5 +112,34 @@ public class BibliotecaDAO {
          System.out.println("Erro ao consultar adm" + e);
          return null;
      }
+ }
+ public Data gerarData(){
+//     Método para gerar a data atual e a de devolução
+    Data dataGerada = new Data();
+    Calendar calendar = Calendar.getInstance();
+    Date data = calendar.getTime();
+        
+    DateFormat f = DateFormat.getDateInstance(DateFormat.SHORT);
+//    Setando a data atual gerada pelo Date
+    dataGerada.setData_hoje(f.format(data));
+//    Adicionando 15 dias na data gerada
+    calendar.add( Calendar.DAY_OF_MONTH , 15 );
+
+    data = calendar.getTime();
+    dataGerada.setData_devolver(f.format(data) );
+//    Retornando a classe Data com a variavel dataGerdad
+    return dataGerada;
+    
+/*    Instaciar dessa forma quando for usar:
+    
+    BibliotecaDAO metodo = new BibliotecaDAO();
+    Data data = metodo.gerarData();
+    
+    ex:
+    
+    String data_hoje = data.getData_hoje();
+    String data_devolver = data.getData_devolver();
+    
+*/
  }
 }
