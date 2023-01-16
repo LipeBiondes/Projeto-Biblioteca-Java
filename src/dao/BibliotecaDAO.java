@@ -47,6 +47,43 @@ public class BibliotecaDAO {
         }
     }
 
+    public Aluno consultarCpf(String cpF) {
+        String sql = "SELECT * FROM `aluno` WHERE cpf = ?";
+        try {
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+            stmt.setString(1, cpF);
+            ResultSet rs = stmt.executeQuery();
+
+            Aluno aluno = new Aluno();
+            rs.first();
+            aluno.setCpf(rs.getString("cpf"));
+            aluno.setEndereco(rs.getString("endereco"));
+            aluno.setNome(rs.getString("nome"));
+            aluno.setTelefone(rs.getString("telefone"));
+            aluno.setLivros_pegados(rs.getInt("livros_pegados"));
+            return aluno;
+        } catch (SQLException e) {
+            System.out.println("Erro ao consultar cpf" + e);
+            return null;
+        }
+    }
+
+    public void editarAluno(Aluno aluno) {
+        String sql = "UPDATE aluno SET nome=?, endereco=?, telefone=? WHERE id=?";
+        try {
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+            stmt.setString(1, aluno.getNome());
+            stmt.setString(2, aluno.getEndereco());
+            stmt.setString(3, aluno.getTelefone());
+            stmt.setInt(4, aluno.getId());
+            stmt.execute();
+        } catch (SQLException e) {
+            System.out.println("Erro ao fazer update: "+e);
+            JOptionPane.showMessageDialog(null, "Ao fazer o update",
+                        "ERRO", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     public void cadastrarLivro(LivroBeans livro) {
         String sql = "INSERT INTO livro(titulo,genero,autor,status,qtd) VALUES" + "(?, ?, ?, ?,?)";
         try {
@@ -145,24 +182,4 @@ public class BibliotecaDAO {
          */
     }
 
-    public Aluno consultarCpf(String cpF) {
-        String sql = "SELECT * FROM `aluno` WHERE cpf = ?";
-        try {
-            PreparedStatement stmt = this.conn.prepareStatement(sql);
-            stmt.setString(1, cpF);
-            ResultSet rs = stmt.executeQuery();
-
-            Aluno aluno = new Aluno();
-            rs.first();
-            aluno.setCpf(rs.getString("cpf"));
-            aluno.setEndereco(rs.getString("endereco"));
-            aluno.setNome(rs.getString("nome"));
-            aluno.setTelefone(rs.getString("telefone"));
-            aluno.setLivros_pegados(rs.getInt("livros_pegados"));
-            return aluno;
-        } catch (SQLException e) {
-            System.out.println("Erro ao consultar cpf" + e);
-            return null;
-        }
-    }
 }
