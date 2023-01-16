@@ -3,11 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Thiag/Documents/NetBeansProjects/Projeto-Biblioteca-Java-main/src/conexao/Conexao.java</file>
-            <file>file:/C:/Users/Thiag/Documents/NetBeansProjects/Projeto-Biblioteca-Java-main/src/gui/Home.java</file>
-            <file>file:/C:/Users/Thiag/Documents/NetBeansProjects/Projeto-Biblioteca-Java-main/src/gui/Cadastro.java</file>
-            <file>file:/C:/Users/Thiag/Documents/NetBeansProjects/Projeto-Biblioteca-Java-main/src/gui/Login.java</file>
-            <file>file:/C:/Users/Thiag/Documents/NetBeansProjects/Projeto-Biblioteca-Java-main/src/biblioteca/Biblioteca.java</file>
+            <file>file:/C:/Users/alefe/OneDrive/Documentos/NetBeansProjects/Biblioteca/src/dao/BibliotecaDAO.java</file>
+            <file>file:/C:/Users/alefe/OneDrive/Documentos/NetBeansProjects/Biblioteca/src/gui/Livro.java</file>
+            <file>file:/C:/Users/alefe/OneDrive/Documentos/NetBeansProjects/Biblioteca/src/gui/Home.java</file>
+            <file>file:/C:/Users/alefe/OneDrive/Documentos/NetBeansProjects/Biblioteca/src/biblioteca/Biblioteca.java</file>
+            <file>file:/C:/Users/alefe/OneDrive/Documentos/NetBeansProjects/Biblioteca/src/gui/TelaAluno.java</file>
+            <file>file:/C:/Users/alefe/OneDrive/Documentos/NetBeansProjects/Biblioteca/src/gui/Login.java</file>
+            <file>file:/C:/Users/alefe/OneDrive/Documentos/NetBeansProjects/Biblioteca/src/gui/Cadastro.java</file>
         </group>
     </open-files>
 </project-private>
