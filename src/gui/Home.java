@@ -46,42 +46,47 @@ public class Home extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
         jButton1.setText("Livro");
+        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(jButton1);
-        jButton1.setBounds(250, 220, 160, 29);
+        jButton1.setBounds(250, 220, 160, 25);
 
         jButton2.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
         jButton2.setText("Aluno");
+        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(250, 180, 160, 29);
+        jButton2.setBounds(250, 180, 160, 25);
 
         jButton4.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
         jButton4.setText("Emprestimo");
+        jButton4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(jButton4);
-        jButton4.setBounds(250, 260, 160, 29);
+        jButton4.setBounds(250, 260, 160, 25);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel2.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 24)); // NOI18N
         jLabel2.setText("Biblioteca");
         jPanel1.add(jLabel2);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(250, 130, 160, 40);
+        jPanel1.setBounds(270, 120, 120, 50);
 
         jButton7.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
         jButton7.setText("Relatorio");
+        jButton7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton7);
-        jButton7.setBounds(250, 300, 160, 29);
+        jButton7.setBounds(250, 300, 160, 25);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/fundo.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
