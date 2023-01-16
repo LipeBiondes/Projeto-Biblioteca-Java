@@ -3,7 +3,7 @@ package beans;
 /**
  * @author Alefe Filipe
  */
-public class Livro {
+public class LivroBeans {
 
     private int id, status, qtd;
     private String titulo, genero, autor;
@@ -55,5 +55,7 @@ public class Livro {
     public void setAutor(String autor) {
         this.autor = autor;
     }
+
+
 
 }

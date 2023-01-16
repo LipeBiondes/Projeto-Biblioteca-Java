@@ -3,7 +3,7 @@ package dao;
 import beans.Adm;
 import beans.Aluno;
 import beans.Data;
-import beans.Livro;
+import beans.LivroBeans;
 import beans.Emprestimo;
 import conexao.Conexao;
 import java.awt.HeadlessException;
@@ -47,7 +47,7 @@ public class BibliotecaDAO {
         }
     }
 
-    public void inserirLivro(Livro livro) {
+    public void cadastrarLivro(LivroBeans livro) {
         String sql = "INSERT INTO livro(titulo,genero,autor,status,qtd) VALUES" + "(?, ?, ?, ?,?)";
         try {
             PreparedStatement stmt = this.conn.prepareStatement(sql);

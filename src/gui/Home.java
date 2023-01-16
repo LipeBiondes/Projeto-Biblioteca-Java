@@ -28,7 +28,7 @@ public class Home extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnLivro = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -44,11 +44,16 @@ public class Home extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1200, 800));
         getContentPane().setLayout(null);
 
-        jButton1.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
-        jButton1.setText("Livro");
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jButton1);
-        jButton1.setBounds(250, 220, 160, 25);
+        btnLivro.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
+        btnLivro.setText("Livro");
+        btnLivro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLivroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnLivro);
+        btnLivro.setBounds(250, 220, 160, 19);
 
         jButton2.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
         jButton2.setText("Aluno");
@@ -59,13 +64,13 @@ public class Home extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(250, 180, 160, 25);
+        jButton2.setBounds(250, 180, 160, 19);
 
         jButton4.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
         jButton4.setText("Emprestimo");
         jButton4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(jButton4);
-        jButton4.setBounds(250, 260, 160, 25);
+        jButton4.setBounds(250, 260, 160, 19);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -86,7 +91,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton7);
-        jButton7.setBounds(250, 300, 160, 25);
+        jButton7.setBounds(250, 300, 160, 19);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/fundo.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
@@ -108,6 +113,11 @@ public class Home extends javax.swing.JFrame {
         
         Home.this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLivroActionPerformed
+       Livro telaLivro = new Livro();
+       telaLivro.setVisible(true);
+    }//GEN-LAST:event_btnLivroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,7 +159,7 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnLivro;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton7;
