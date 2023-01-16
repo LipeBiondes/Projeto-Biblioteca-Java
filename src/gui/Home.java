@@ -15,7 +15,6 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
-        Home.this.setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**
@@ -35,6 +34,7 @@ public class Home extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/fundo.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -47,26 +47,31 @@ public class Home extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
         jButton1.setText("Livro");
         getContentPane().add(jButton1);
-        jButton1.setBounds(340, 220, 160, 29);
+        jButton1.setBounds(250, 220, 160, 29);
 
         jButton2.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
         jButton2.setText("Aluno");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2);
-        jButton2.setBounds(340, 180, 160, 29);
+        jButton2.setBounds(250, 180, 160, 29);
 
         jButton4.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
         jButton4.setText("Emprestimo");
         getContentPane().add(jButton4);
-        jButton4.setBounds(340, 260, 160, 29);
+        jButton4.setBounds(250, 260, 160, 29);
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 24)); // NOI18N
         jLabel2.setText("Biblioteca");
         jPanel1.add(jLabel2);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(40, 40, 150, 110);
+        jPanel1.setBounds(250, 130, 160, 40);
 
         jButton7.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
         jButton7.setText("Relatorio");
@@ -76,15 +81,28 @@ public class Home extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton7);
-        jButton7.setBounds(340, 300, 160, 29);
+        jButton7.setBounds(250, 300, 160, 29);
 
-        setSize(new java.awt.Dimension(900, 499));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/fundo.jpg"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(-3, -4, 660, 480);
+
+        setSize(new java.awt.Dimension(667, 483));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        TelaAluno telaAluno = new TelaAluno();
+        telaAluno.setVisible(true);
+        
+        Home.this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,6 +150,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
