@@ -7,6 +7,7 @@ package gui;
 import beans.LivroBeans;
 import dao.BibliotecaDAO;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Alefe Filipe
@@ -174,18 +175,29 @@ public class Livro extends javax.swing.JFrame {
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         String nomeLivro, nomeAutor, generoLivro;
         int quantidade;
-        nomeLivro = txtNomeLivro.getText();
-        nomeAutor = txtNomeAutor.getText();
-        generoLivro = txtGenero.getText();
-        quantidade = Integer.parseInt(txtQuantidade.getText());
-        LivroBeans livroB = new LivroBeans();
-        livroB.setTitulo(nomeLivro);
-        livroB.setAutor(nomeAutor);
-        livroB.setGenero(generoLivro);
-        livroB.setQtd(quantidade);
-        BibliotecaDAO cadastro = new BibliotecaDAO();
-        cadastro.cadastrarLivro(livroB);
-        JOptionPane.showMessageDialog(null, "Usuario Cadastrado");
+
+        if ("".equals(txtNomeLivro.getText()) || "".equals(txtNomeAutor.getText()) || "".equals(txtGenero.getText()) || "".equals(txtQuantidade.getText())) {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos ");
+        } else {
+            nomeLivro = txtNomeLivro.getText();
+            nomeAutor = txtNomeAutor.getText();
+            generoLivro = txtGenero.getText();
+            quantidade = Integer.parseInt(txtQuantidade.getText());
+            LivroBeans livroB = new LivroBeans();
+            livroB.setTitulo(nomeLivro);
+            livroB.setAutor(nomeAutor);
+            livroB.setGenero(generoLivro);
+            livroB.setQtd(quantidade);
+            BibliotecaDAO cadastro = new BibliotecaDAO();
+            cadastro.cadastrarLivro(livroB);
+
+            txtNomeLivro.setText("");
+            txtNomeAutor.setText("");
+            txtQuantidade.setText("");
+            txtGenero.setText("");
+            
+        }
+
 
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
