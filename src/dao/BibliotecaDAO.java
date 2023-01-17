@@ -72,12 +72,12 @@ public class BibliotecaDAO {
         }
     }
 
-    public Consulta consultarID(String id_aluno, String id_livro) {
+    public Consulta consultarID(int id_aluno, int id_livro) {
         String sql_aluno = "SELECT * FROM `aluno` WHERE id = ?";
         String sql_livro = "SELECT * FROM `livro` WHERE id = ?";
         try {
             PreparedStatement stmt = this.conn.prepareStatement(sql_aluno);
-            stmt.setString(1, id_aluno);
+            stmt.setInt(1, id_aluno);
             ResultSet rs = stmt.executeQuery();
 
             Consulta consulta = new Consulta();
@@ -87,7 +87,7 @@ public class BibliotecaDAO {
             //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
             
             stmt = this.conn.prepareStatement(sql_livro);
-            stmt.setString(1, id_livro);
+            stmt.setInt(1, id_livro);
             rs = stmt.executeQuery();
 
             rs.first();

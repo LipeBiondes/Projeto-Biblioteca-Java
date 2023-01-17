@@ -5,6 +5,7 @@
 package gui;
 
 import beans.Aluno;
+import beans.Consulta;
 import beans.Data;
 import beans.EmprestimoBeans;
 import beans.EmprestimoTableModel;
@@ -38,20 +39,21 @@ public class Emprestimo extends javax.swing.JFrame {
     public void readJTable(){
         DefaultTableModel modelo = (DefaultTableModel) jTemprestimos.getModel();
         
-        Aluno aluno = new Aluno();
+        Consulta consulta = new Consulta();
         
         BibliotecaDAO emprestimo = new BibliotecaDAO();
         
-        aluno = emprestimo.consultarCpf(cpF);
         
         
         for(EmprestimoBeans e: emprestimo.read()){
             
+            consulta = emprestimo.consultarID(e.getId_aluno(), e.getId_livro());
+            
             modelo.addRow(new Object[]{
                 
                 e.getId(),
-                e.getId_aluno(),
-                e.getId_livro(),
+                consulta.getNome_aluno(),
+                consulta.getTitulo(),
                 e.getDataP(),
                 e.getDataD()
                 
