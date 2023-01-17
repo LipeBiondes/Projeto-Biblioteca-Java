@@ -19,7 +19,6 @@ import javax.swing.text.MaskFormatter;
 public class TelaAluno extends javax.swing.JFrame {
 
     boolean pesquisou = false;
-    int id_pesquisa;
     String cpF;
 
     /**
@@ -386,8 +385,7 @@ public class TelaAluno extends javax.swing.JFrame {
                 txtCPF.setText(aluno.getCpf());
                 txtTelefone.setText(aluno.getTelefone());
                 pesquisou = true;
-                id_pesquisa = aluno.getId();
-                cpF = aluno.getCpf();
+                cpF = txtPesquisaCPF.getText();
             }
         }
     }//GEN-LAST:event_btnPesquisarActionPerformed
@@ -419,9 +417,28 @@ public class TelaAluno extends javax.swing.JFrame {
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
         // TODO add your handling code here:
         BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
-        Aluno aluno = new Aluno();
-        
-        aluno = bibliotecaDAO.consultarCpf(cpF);
+
+        Aluno alunoP = new Aluno();
+        alunoP = bibliotecaDAO.consultarCpf(cpF);
+
+        if (alunoP == null) {
+            JOptionPane.showMessageDialog(null, "Usuario não encontrado, pesquise novamente!",
+                    "ERRO", JOptionPane.ERROR_MESSAGE);
+        } else {
+            alunoP.setNome(txtNome.getText());
+            alunoP.setEndereco(txtEndereco.getText());
+            alunoP.setTelefone(txtTelefone.getText());
+            bibliotecaDAO.editarAluno(alunoP);
+            JOptionPane.showMessageDialog(null, "Sucesso ao editar Aluno!",
+                    "SUCESSO", JOptionPane.INFORMATION_MESSAGE);
+            txtPesquisaCPF.setText("");
+            txtNome.setText("");
+            txtEndereco.setText("");
+            txtCPF.setText("");
+            txtTelefone.setText("");
+            pesquisou = false;
+            btnAtualizar.setEnabled(false);
+        }
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void btnExcluirDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirDadosActionPerformed
@@ -437,7 +454,6 @@ public class TelaAluno extends javax.swing.JFrame {
             btnCadastrar.setEnabled(false);
             btnPesquisar.setEnabled(false);
             btnExcluir.setEnabled(true);
-
         } else {
             btnAtualizar.setEnabled(false);
             btnCadastrar.setEnabled(false);
@@ -450,6 +466,30 @@ public class TelaAluno extends javax.swing.JFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
+        String conf = JOptionPane.showInputDialog("Insira o cpf para confirmar a exclusão");
+        BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
+
+        if (conf.equals(cpF)) {
+            Aluno alunoE = new Aluno();
+            alunoE = bibliotecaDAO.consultarCpf(cpF);
+
+            if (alunoE.getLivros_pegados() != 0) {
+                JOptionPane.showMessageDialog(null, "O aluno precisa devolver os livros primeiro!",
+                        "ERRO", JOptionPane.ERROR_MESSAGE);
+            } else {
+                bibliotecaDAO.excluirAluno(alunoE.getId());
+                txtPesquisaCPF.setText("");
+                txtNome.setText("");
+                txtEndereco.setText("");
+                txtCPF.setText("");
+                txtTelefone.setText("");
+                pesquisou = false;
+                btnExcluir.setEnabled(false);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Cpf não confere, Digite-o de novo!",
+                    "ERRO", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
@@ -462,14 +502,14 @@ public class TelaAluno extends javax.swing.JFrame {
         if ("".equals(nome) || "".equals(endereco) || "".equals(telefone) || "".equals(cpf)) {
             JOptionPane.showMessageDialog(null, "Campos vazios, preencha-os!",
                     "ERRO", JOptionPane.ERROR_MESSAGE);
-                txtCPF.setText("");
+            txtCPF.setText("");
         } else {
             BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
             Aluno cpfAluno = bibliotecaDAO.consultarCpf(cpf);
 
             if (cpfAluno != null) {
                 JOptionPane.showMessageDialog(null, "Cpf ja cadastrado!",
-                    "ERRO", JOptionPane.ERROR_MESSAGE);
+                        "ERRO", JOptionPane.ERROR_MESSAGE);
                 txtCPF.setText("");
             } else {
                 Aluno aluno = new Aluno();

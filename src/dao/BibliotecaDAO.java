@@ -4,7 +4,7 @@ import beans.Adm;
 import beans.Aluno;
 import beans.Data;
 import beans.LivroBeans;
-import beans.Emprestimo;
+import beans.EmprestimoBeans;
 import conexao.Conexao;
 import java.awt.HeadlessException;
 import java.sql.Connection;
@@ -12,8 +12,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -61,6 +63,7 @@ public class BibliotecaDAO {
             aluno.setNome(rs.getString("nome"));
             aluno.setTelefone(rs.getString("telefone"));
             aluno.setLivros_pegados(rs.getInt("livros_pegados"));
+            aluno.setId(rs.getInt("id"));
             return aluno;
         } catch (SQLException e) {
             System.out.println("Erro ao consultar cpf" + e);
@@ -77,10 +80,25 @@ public class BibliotecaDAO {
             stmt.setString(3, aluno.getTelefone());
             stmt.setInt(4, aluno.getId());
             stmt.execute();
+            System.out.println("Sucesso ao editar aluno");
         } catch (SQLException e) {
-            System.out.println("Erro ao fazer update: "+e);
+            System.out.println("Erro ao fazer update: " + e);
             JOptionPane.showMessageDialog(null, "Ao fazer o update",
-                        "ERRO", JOptionPane.ERROR_MESSAGE);
+                    "ERRO", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void excluirAluno(int id) {
+        String sql = "DELETE FROM aluno WHERE id=?";
+        try {
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            stmt.execute();
+            System.out.println("Sucesso ao excluir aluno!");
+            JOptionPane.showMessageDialog(null, "Sucesso ao excluir dados!");
+        } catch (SQLException e) {
+            System.out.println("Erro ao excluir aluno! " + e);
+            JOptionPane.showMessageDialog(null, "Erro ao excluir aluno!");
         }
     }
 
@@ -101,7 +119,7 @@ public class BibliotecaDAO {
         }
     }
 
-    public void inserirEmprestimo(Emprestimo emprestimo) {
+    public void inserirEmprestimo(EmprestimoBeans emprestimo) {
         String sql = "INSERT INTO emprestimo(id_aluno, id_livro, id_adm, dataP, dataD, status) VALUES" + "(?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement stmt = this.conn.prepareStatement(sql);
@@ -171,15 +189,44 @@ public class BibliotecaDAO {
 
         /*    Instaciar dessa forma quando for usar:
     
-    BibliotecaDAO metodo = new BibliotecaDAO();
-    Data data = metodo.gerarData();
-    
-    ex:
-    
-    String data_hoje = data.getData_hoje();
-    String data_devolver = data.getData_devolver();
+        BibliotecaDAO metodo = new BibliotecaDAO();
+        Data data = metodo.gerarData();
+
+        ex:
+
+        String data_hoje = data.getData_hoje();
+        String data_devolver = data.getData_devolver();
     
          */
     }
 
+    public List<EmprestimoBeans> read() {
+
+        String sql = "SELECT * FROM `emprestimo`";
+
+        List<EmprestimoBeans> emprestimos = new ArrayList<>();
+
+        try {
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                EmprestimoBeans emprestimo = new EmprestimoBeans();
+
+                emprestimo.setId(rs.getInt("id"));
+                emprestimo.setId_aluno(rs.getInt("id_aluno"));
+                emprestimo.setId_livro(rs.getInt("id_livro"));
+
+                emprestimo.setDataP(rs.getString("dataP"));
+                emprestimo.setDataD(rs.getString("dataD"));
+
+                emprestimos.add(emprestimo);
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao consultar Emprestimo: " + e);
+            return null;
+        }
+        return emprestimos;
+    }
 }
