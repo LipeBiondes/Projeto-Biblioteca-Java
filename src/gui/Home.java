@@ -41,7 +41,6 @@ public class Home extends javax.swing.JFrame {
         jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1366, 768));
         setSize(new java.awt.Dimension(1200, 800));
         getContentPane().setLayout(null);
 
@@ -70,6 +69,11 @@ public class Home extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
         jButton4.setText("Emprestimo");
         jButton4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton4);
         jButton4.setBounds(250, 260, 160, 25);
 
@@ -120,6 +124,13 @@ public class Home extends javax.swing.JFrame {
        telaLivro.setVisible(true);
        Home.this.setVisible(false);
     }//GEN-LAST:event_btnLivroActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        Emprestimo emprestimo = new Emprestimo();
+        emprestimo.setVisible(true);
+        Home.this.setVisible(false);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

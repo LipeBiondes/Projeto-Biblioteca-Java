@@ -204,6 +204,7 @@ public class Livro extends javax.swing.JFrame {
     private void btnConsultarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarLivroActionPerformed
         ConsultarLivro consulta = new ConsultarLivro();
         consulta.setVisible(true);
+        Livro.this.setVisible(false);
     }//GEN-LAST:event_btnConsultarLivroActionPerformed
 
     private void btnCadastrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrar1ActionPerformed

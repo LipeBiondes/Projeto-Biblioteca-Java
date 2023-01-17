@@ -11,9 +11,18 @@ package beans;
 public class Consulta {
 
     private String nome_aluno, titulo;
+    private int qtd;
 
     public String getNome_aluno() {
         return nome_aluno;
+    }
+
+    public int getQtd() {
+        return qtd;
+    }
+
+    public void setQtd(int qtd) {
+        this.qtd = qtd;
     }
 
     public void setNome_aluno(String nome_aluno) {

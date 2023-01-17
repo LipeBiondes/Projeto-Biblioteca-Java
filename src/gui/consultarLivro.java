@@ -4,14 +4,11 @@
  */
 package gui;
 
-import beans.EmprestimoBeans;
 import beans.LivroBeans;
 import beans.livroTableModel;
-import com.mysql.cj.xdevapi.Table;
 import dao.ConsultaDAO;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 /**

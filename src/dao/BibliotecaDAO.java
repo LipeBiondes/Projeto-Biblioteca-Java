@@ -91,6 +91,7 @@ public class BibliotecaDAO {
 
             rsLivro.first();
             consulta.setTitulo(rsLivro.getString("titulo"));
+            consulta.setQtd(rsLivro.getInt("qtd"));
 
             return consulta;
         } catch (SQLException e) {
@@ -147,6 +148,34 @@ public class BibliotecaDAO {
         }
     }
 
+    public void updateQtdLivro(int id_livro, int qtd) {
+        String sql = "UPDATE `livro` SET `qtd`=? WHERE `id`=?";
+        qtd = qtd - 1;
+        try {
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+            stmt.setInt(1, qtd);
+            stmt.setInt(2, id_livro);
+            stmt.execute();
+            JOptionPane.showMessageDialog(null, "Sucesso ao Atualizar dados!");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao inserir dados!");
+        }
+    }
+
+        public void updateQtdLivroM(int id_livro, int qtd) {
+        String sql = "UPDATE `livro` SET `qtd`=? WHERE `id`=?";
+        qtd = qtd + 1;
+        try {
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+            stmt.setInt(1, qtd);
+            stmt.setInt(2, id_livro);
+            stmt.execute();
+            JOptionPane.showMessageDialog(null, "Sucesso ao Atualizar dados!");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao inserir dados!");
+        }
+    }
+        
     public void inserirEmprestimo(EmprestimoBeans emprestimo) {
         String sql = "INSERT INTO emprestimo(id_aluno, id_livro, id_adm, dataP, dataD, status) VALUES" + "(?, ?, ?, ?, ?, ?)";
         try {
@@ -156,7 +185,7 @@ public class BibliotecaDAO {
             stmt.setInt(3, emprestimo.getId_adm());
             stmt.setString(4, emprestimo.getDataP());
             stmt.setString(5, emprestimo.getDataD());
-            stmt.setInt(6, emprestimo.getStatus());
+            stmt.setInt(6, 1);
             stmt.execute();
             JOptionPane.showMessageDialog(null, "Sucesso ao inserir dados!");
         } catch (HeadlessException | SQLException e) {
@@ -204,6 +233,25 @@ public class BibliotecaDAO {
             rs.first();
             adm.setLogin(rs.getString("login"));
             adm.setSenha(rs.getString("senha"));
+            return adm;
+        } catch (SQLException e) {
+            System.out.println("Erro ao consultar adm" + e);
+            return null;
+        }
+    }
+
+    public Adm auntenticarAdm(String login) {
+        String sql = "SELECT * FROM `adm` WHERE login = ?";
+        try {
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+            stmt.setString(1, login);
+            ResultSet rs = stmt.executeQuery();
+            Adm adm = new Adm();
+
+            rs.first();
+            adm.setLogin(rs.getString("login"));
+            adm.setSenha(rs.getString("senha"));
+            adm.setId(rs.getInt("id"));
             return adm;
         } catch (SQLException e) {
             System.out.println("Erro ao consultar adm" + e);
