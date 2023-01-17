@@ -5,15 +5,19 @@ import beans.Aluno;
 import beans.Data;
 import beans.LivroBeans;
 import beans.Emprestimo;
+import beans.EmprestimoBeans;
 import conexao.Conexao;
+import gui.Emprestimo;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -78,9 +82,9 @@ public class BibliotecaDAO {
             stmt.setInt(4, aluno.getId());
             stmt.execute();
         } catch (SQLException e) {
-            System.out.println("Erro ao fazer update: "+e);
+            System.out.println("Erro ao fazer update: " + e);
             JOptionPane.showMessageDialog(null, "Ao fazer o update",
-                        "ERRO", JOptionPane.ERROR_MESSAGE);
+                    "ERRO", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -171,15 +175,45 @@ public class BibliotecaDAO {
 
         /*    Instaciar dessa forma quando for usar:
     
-    BibliotecaDAO metodo = new BibliotecaDAO();
-    Data data = metodo.gerarData();
-    
-    ex:
-    
-    String data_hoje = data.getData_hoje();
-    String data_devolver = data.getData_devolver();
+        BibliotecaDAO metodo = new BibliotecaDAO();
+        Data data = metodo.gerarData();
+
+        ex:
+
+        String data_hoje = data.getData_hoje();
+        String data_devolver = data.getData_devolver();
     
          */
+    }
+
+    public List<EmprestimoBeans> read() {
+
+        String sql = "SELECT `id`, `id_aluno`, `id_livro` FROM `emprestimos`";
+
+        List<EmprestimoBeans> emprestimos = new ArrayList<>();
+
+        try {
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                EmprestimoBeans emprestimo = new EmprestimoBeans();
+
+                emprestimo.setId(rs.getInt("id"));
+                emprestimo.setId_aluno(rs.getInt("id_aluno"));
+                emprestimo.setId_livro(rs.getInt("id_livro"));
+
+                emprestimos.add(emprestimo);
+
+            }
+
+        } catch (Exception e) {
+            System.out.println("Erro ao consultar Emprestimo: " + e);
+            return null;
+        }
+
+        return emprestimos;
     }
 
 }
