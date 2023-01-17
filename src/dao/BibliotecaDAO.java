@@ -6,7 +6,6 @@ import beans.Data;
 import beans.LivroBeans;
 import beans.EmprestimoBeans;
 import conexao.Conexao;
-import gui.Emprestimo;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -203,7 +202,7 @@ public class BibliotecaDAO {
 
     public List<EmprestimoBeans> read() {
 
-        String sql = "SELECT * FROM `emprestimos`";
+        String sql = "SELECT * FROM `emprestimo`";
 
         List<EmprestimoBeans> emprestimos = new ArrayList<>();
 
@@ -223,15 +222,11 @@ public class BibliotecaDAO {
                 emprestimo.setDataD(rs.getString("dataD"));
 
                 emprestimos.add(emprestimo);
-
             }
-
         } catch (SQLException e) {
             System.out.println("Erro ao consultar Emprestimo: " + e);
             return null;
         }
-
         return emprestimos;
     }
-
 }

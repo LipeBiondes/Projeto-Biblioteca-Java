@@ -468,16 +468,23 @@ public class TelaAluno extends javax.swing.JFrame {
         // TODO add your handling code here:
         String conf = JOptionPane.showInputDialog("Insira o cpf para confirmar a exclusão");
         BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
-        
+
         if (conf.equals(cpF)) {
             Aluno alunoE = new Aluno();
             alunoE = bibliotecaDAO.consultarCpf(cpF);
-            
+
             if (alunoE.getLivros_pegados() != 0) {
                 JOptionPane.showMessageDialog(null, "O aluno precisa devolver os livros primeiro!",
                         "ERRO", JOptionPane.ERROR_MESSAGE);
             } else {
                 bibliotecaDAO.excluirAluno(alunoE.getId());
+                txtPesquisaCPF.setText("");
+                txtNome.setText("");
+                txtEndereco.setText("");
+                txtCPF.setText("");
+                txtTelefone.setText("");
+                pesquisou = false;
+                btnExcluir.setEnabled(false);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Cpf não confere, Digite-o de novo!",
