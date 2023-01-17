@@ -64,6 +64,7 @@ public class BibliotecaDAO {
             aluno.setNome(rs.getString("nome"));
             aluno.setTelefone(rs.getString("telefone"));
             aluno.setLivros_pegados(rs.getInt("livros_pegados"));
+            aluno.setId(rs.getInt("id"));
             return aluno;
         } catch (SQLException e) {
             System.out.println("Erro ao consultar cpf" + e);
@@ -80,10 +81,25 @@ public class BibliotecaDAO {
             stmt.setString(3, aluno.getTelefone());
             stmt.setInt(4, aluno.getId());
             stmt.execute();
+            System.out.println("Sucesso ao editar aluno");
         } catch (SQLException e) {
             System.out.println("Erro ao fazer update: " + e);
             JOptionPane.showMessageDialog(null, "Ao fazer o update",
                     "ERRO", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void excluirAluno(int id) {
+        String sql = "DELETE FROM aluno WHERE id=?";
+        try {
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            stmt.execute();
+            System.out.println("Sucesso ao excluir aluno!");
+            JOptionPane.showMessageDialog(null, "Sucesso ao excluir dados!");
+        } catch (SQLException e) {
+            System.out.println("Erro ao excluir aluno! " + e);
+            JOptionPane.showMessageDialog(null, "Erro ao excluir aluno!");
         }
     }
 
