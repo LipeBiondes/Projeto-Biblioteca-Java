@@ -76,22 +76,22 @@ public class BibliotecaDAO {
         String sql_aluno = "SELECT * FROM `aluno` WHERE id = ?";
         String sql_livro = "SELECT * FROM `livro` WHERE id = ?";
         try {
-            PreparedStatement stmt = this.conn.prepareStatement(sql_aluno);
-            stmt.setInt(1, id_aluno);
-            ResultSet rs = stmt.executeQuery();
+            PreparedStatement stmtAluno = this.conn.prepareStatement(sql_aluno);
+            stmtAluno.setInt(1, id_aluno);
+            ResultSet rsAluno = stmtAluno.executeQuery();
 
             Consulta consulta = new Consulta();
-            rs.first();
-            consulta.setNome_aluno(rs.getString("nome"));
+            rsAluno.first();
+            consulta.setNome_aluno(rsAluno.getString("nome"));
 
             //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
             
-            stmt = this.conn.prepareStatement(sql_livro);
-            stmt.setInt(1, id_livro);
-            rs = stmt.executeQuery();
+             PreparedStatement stmtLivro = this.conn.prepareStatement(sql_livro);
+            stmtLivro.setInt(1, id_livro);
+            ResultSet rsLivro = stmtLivro.executeQuery();
 
-            rs.first();
-            consulta.setTitulo(rs.getString("titulo"));
+            rsLivro.first();
+            consulta.setTitulo(rsLivro.getString("titulo"));
             
             return consulta;
         } catch (SQLException e) {
