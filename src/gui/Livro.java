@@ -40,7 +40,7 @@ public class Livro extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtQuantidade = new javax.swing.JTextField();
         btnCadastrar = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnConsultarLivro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,7 +69,12 @@ public class Livro extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Consultar Livros");
+        btnConsultarLivro.setText("Consultar Livros");
+        btnConsultarLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarLivroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout txtGeneroLivroLayout = new javax.swing.GroupLayout(txtGeneroLivro);
         txtGeneroLivro.setLayout(txtGeneroLivroLayout);
@@ -90,7 +95,7 @@ public class Livro extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(txtGeneroLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txtGeneroLivroLayout.createSequentialGroup()
-                                .addComponent(jButton3)
+                                .addComponent(btnConsultarLivro)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                                 .addComponent(btnCadastrar))
                             .addComponent(txtNomeLivro)
@@ -123,7 +128,7 @@ public class Livro extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(txtGeneroLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadastrar)
-                    .addComponent(jButton3))
+                    .addComponent(btnConsultarLivro))
                 .addContainerGap(144, Short.MAX_VALUE))
         );
 
@@ -169,6 +174,11 @@ public class Livro extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
+    private void btnConsultarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarLivroActionPerformed
+        consultarLivro consulta = new consultarLivro();
+        consulta.setVisible(true);
+    }//GEN-LAST:event_btnConsultarLivroActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -208,7 +218,7 @@ public class Livro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnConsultarLivro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
