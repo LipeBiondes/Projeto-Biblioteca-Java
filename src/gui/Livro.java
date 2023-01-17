@@ -18,6 +18,7 @@ public class Livro extends javax.swing.JFrame {
      */
     public Livro() {
         initComponents();
+        Livro.this.setLocationRelativeTo(null);
     }
 
     /**
@@ -41,6 +42,7 @@ public class Livro extends javax.swing.JFrame {
         txtQuantidade = new javax.swing.JTextField();
         btnCadastrar = new javax.swing.JButton();
         btnConsultarLivro = new javax.swing.JButton();
+        btnCadastrar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,6 +78,13 @@ public class Livro extends javax.swing.JFrame {
             }
         });
 
+        btnCadastrar1.setText("Voltar");
+        btnCadastrar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrar1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout txtGeneroLivroLayout = new javax.swing.GroupLayout(txtGeneroLivro);
         txtGeneroLivro.setLayout(txtGeneroLivroLayout);
         txtGeneroLivroLayout.setHorizontalGroup(
@@ -103,6 +112,10 @@ public class Livro extends javax.swing.JFrame {
                             .addComponent(txtGenero)
                             .addComponent(txtQuantidade))))
                 .addContainerGap(112, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txtGeneroLivroLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnCadastrar1)
+                .addGap(181, 181, 181))
         );
         txtGeneroLivroLayout.setVerticalGroup(
             txtGeneroLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,7 +142,9 @@ public class Livro extends javax.swing.JFrame {
                 .addGroup(txtGeneroLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadastrar)
                     .addComponent(btnConsultarLivro))
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCadastrar1)
+                .addContainerGap(115, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -175,9 +190,16 @@ public class Livro extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnConsultarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarLivroActionPerformed
-        consultarLivro consulta = new consultarLivro();
+        ConsultarLivro consulta = new ConsultarLivro();
         consulta.setVisible(true);
     }//GEN-LAST:event_btnConsultarLivroActionPerformed
+
+    private void btnCadastrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrar1ActionPerformed
+        // TODO add your handling code here:
+        Home home = new Home();
+        home.setVisible(true);
+        Livro.this.setVisible(false);
+    }//GEN-LAST:event_btnCadastrar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -218,6 +240,7 @@ public class Livro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
+    private javax.swing.JButton btnCadastrar1;
     private javax.swing.JButton btnConsultarLivro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

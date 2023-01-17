@@ -28,6 +28,7 @@ public class TelaAluno extends javax.swing.JFrame {
         initComponents();
         txtPesquisaCPF.setEnabled(false);
         txtCPF.setEnabled(false);
+        TelaAluno.this.setLocationRelativeTo(null);
     }
 
     /**

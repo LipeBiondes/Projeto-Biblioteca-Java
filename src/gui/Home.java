@@ -15,6 +15,7 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
+        Home.this.setLocationRelativeTo(null);
     }
 
     /**
@@ -53,7 +54,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnLivro);
-        btnLivro.setBounds(250, 220, 160, 19);
+        btnLivro.setBounds(250, 220, 160, 25);
 
         jButton2.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
         jButton2.setText("Aluno");
@@ -64,13 +65,13 @@ public class Home extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(250, 180, 160, 19);
+        jButton2.setBounds(250, 180, 160, 25);
 
         jButton4.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
         jButton4.setText("Emprestimo");
         jButton4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(jButton4);
-        jButton4.setBounds(250, 260, 160, 19);
+        jButton4.setBounds(250, 260, 160, 25);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -91,7 +92,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton7);
-        jButton7.setBounds(250, 300, 160, 19);
+        jButton7.setBounds(250, 300, 160, 25);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/fundo.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
@@ -117,6 +118,7 @@ public class Home extends javax.swing.JFrame {
     private void btnLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLivroActionPerformed
        Livro telaLivro = new Livro();
        telaLivro.setVisible(true);
+       Home.this.setVisible(false);
     }//GEN-LAST:event_btnLivroActionPerformed
 
     /**

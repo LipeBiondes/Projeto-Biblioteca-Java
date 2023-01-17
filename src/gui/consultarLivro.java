@@ -17,22 +17,24 @@ import javax.swing.table.TableRowSorter;
  *
  * @author thiago
  */
-public class consultarLivro extends javax.swing.JFrame {
+public class ConsultarLivro extends javax.swing.JFrame {
 
     /**
      * Creates new form consultarLivro
      */
     livroTableModel livro = new livroTableModel();
 
-    public consultarLivro() {
+    public ConsultarLivro() {
         initComponents();
         DefaultTableModel modelo = (DefaultTableModel) txtTabela.getModel();
         txtTabela.setRowSorter(new TableRowSorter(modelo));
+        ConsultarLivro.this.setLocationRelativeTo(null);
 
     }
 
     public void readJtable() {
         DefaultTableModel modelo = (DefaultTableModel) txtTabela.getModel();
+        modelo.setNumRows(0);
         ConsultaDAO consulta = new ConsultaDAO();
         for (LivroBeans e : consulta.read()) {
 
@@ -77,7 +79,7 @@ public class consultarLivro extends javax.swing.JFrame {
         txtIDLivro = new javax.swing.JTextField();
         btnSelecionar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         txtTabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -86,7 +88,15 @@ public class consultarLivro extends javax.swing.JFrame {
             new String [] {
                 "ID", "Titulo", "Autor", "Genero", "Quantidade"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         txtTabela.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtTabelaMouseClicked(evt);
@@ -288,6 +298,7 @@ public class consultarLivro extends javax.swing.JFrame {
 
         ConsultaDAO atualizar = new ConsultaDAO();
         atualizar.atualizarLivro(livro);
+        readJtable();
 
 
     }//GEN-LAST:event_btnEditarActionPerformed
@@ -336,6 +347,7 @@ public class consultarLivro extends javax.swing.JFrame {
         
         ConsultaDAO apagar = new ConsultaDAO();
         apagar.apagarLivro(id);
+        readJtable();
 
     }//GEN-LAST:event_btnApagarLivroActionPerformed
 
@@ -356,20 +368,21 @@ public class consultarLivro extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(consultarLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(consultarLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(consultarLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(consultarLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new consultarLivro().setVisible(true);
+                new ConsultarLivro().setVisible(true);
             }
         });
     }
