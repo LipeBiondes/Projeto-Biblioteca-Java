@@ -2,6 +2,7 @@ package dao;
 
 import beans.Adm;
 import beans.Aluno;
+import beans.Consulta;
 import beans.Data;
 import beans.LivroBeans;
 import beans.EmprestimoBeans;
@@ -67,6 +68,34 @@ public class BibliotecaDAO {
             return aluno;
         } catch (SQLException e) {
             System.out.println("Erro ao consultar cpf" + e);
+            return null;
+        }
+    }
+
+    public Consulta consultarID(String id_aluno, String id_livro) {
+        String sql_aluno = "SELECT * FROM `aluno` WHERE id = ?";
+        String sql_livro = "SELECT * FROM `livro` WHERE id = ?";
+        try {
+            PreparedStatement stmt = this.conn.prepareStatement(sql_aluno);
+            stmt.setString(1, id_aluno);
+            ResultSet rs = stmt.executeQuery();
+
+            Consulta consulta = new Consulta();
+            rs.first();
+            consulta.setNome_aluno(rs.getString("nome"));
+
+            //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
+            
+            stmt = this.conn.prepareStatement(sql_livro);
+            stmt.setString(1, id_livro);
+            rs = stmt.executeQuery();
+
+            rs.first();
+            consulta.setTitulo(rs.getString("titulo"));
+            
+            return consulta;
+        } catch (SQLException e) {
+            System.out.println("Erro ao consultar livro OU aluno: " + e);
             return null;
         }
     }

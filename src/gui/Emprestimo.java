@@ -4,6 +4,7 @@
  */
 package gui;
 
+import beans.Aluno;
 import beans.Data;
 import beans.EmprestimoBeans;
 import beans.EmprestimoTableModel;
@@ -36,8 +37,13 @@ public class Emprestimo extends javax.swing.JFrame {
 
     public void readJTable(){
         DefaultTableModel modelo = (DefaultTableModel) jTemprestimos.getModel();
-
+        
+        Aluno aluno = new Aluno();
+        
         BibliotecaDAO emprestimo = new BibliotecaDAO();
+        
+        aluno = emprestimo.consultarCpf(cpF);
+        
         
         for(EmprestimoBeans e: emprestimo.read()){
             
@@ -86,13 +92,13 @@ public class Emprestimo extends javax.swing.JFrame {
 
         jTemprestimos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Aluno", "Titulo", "Data Inicio", "Data Fim"
             }
         ));
         jScrollPane2.setViewportView(jTemprestimos);
