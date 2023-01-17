@@ -28,7 +28,10 @@ public class Emprestimo extends javax.swing.JFrame {
         initComponents();
         DefaultTableModel modelo = (DefaultTableModel) jTemprestimos.getModel();
         jTemprestimos.setRowSorter(new TableRowSorter(modelo));
-        jTemprestimos.setModel(tablemodel);
+        //jTemprestimos.setModel(tablemodel);
+        
+        readJTable();
+        
     }
 
     public void readJTable(){
