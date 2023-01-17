@@ -4,7 +4,6 @@ import beans.Adm;
 import beans.Aluno;
 import beans.Data;
 import beans.LivroBeans;
-import beans.Emprestimo;
 import beans.EmprestimoBeans;
 import conexao.Conexao;
 import gui.Emprestimo;
@@ -105,7 +104,7 @@ public class BibliotecaDAO {
         }
     }
 
-    public void inserirEmprestimo(Emprestimo emprestimo) {
+    public void inserirEmprestimo(EmprestimoBeans emprestimo) {
         String sql = "INSERT INTO emprestimo(id_aluno, id_livro, id_adm, dataP, dataD, status) VALUES" + "(?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement stmt = this.conn.prepareStatement(sql);
@@ -188,7 +187,7 @@ public class BibliotecaDAO {
 
     public List<EmprestimoBeans> read() {
 
-        String sql = "SELECT `id`, `id_aluno`, `id_livro` FROM `emprestimos`";
+        String sql = "SELECT * FROM `emprestimos`";
 
         List<EmprestimoBeans> emprestimos = new ArrayList<>();
 
@@ -204,11 +203,14 @@ public class BibliotecaDAO {
                 emprestimo.setId_aluno(rs.getInt("id_aluno"));
                 emprestimo.setId_livro(rs.getInt("id_livro"));
 
+                emprestimo.setDataP(rs.getString("dataP"));
+                emprestimo.setDataD(rs.getString("dataD"));
+
                 emprestimos.add(emprestimo);
 
             }
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Erro ao consultar Emprestimo: " + e);
             return null;
         }
