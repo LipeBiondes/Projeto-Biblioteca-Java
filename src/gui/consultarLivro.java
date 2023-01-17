@@ -7,8 +7,10 @@ package gui;
 import beans.EmprestimoBeans;
 import beans.LivroBeans;
 import beans.livroTableModel;
+import com.mysql.cj.xdevapi.Table;
 import dao.ConsultaDAO;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 /**
@@ -27,25 +29,22 @@ public class consultarLivro extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) txtTabela.getModel();
         txtTabela.setRowSorter(new TableRowSorter(modelo));
 
-        
     }
 
     public void readJtable() {
         DefaultTableModel modelo = (DefaultTableModel) txtTabela.getModel();
         ConsultaDAO consulta = new ConsultaDAO();
-         for(LivroBeans e: consulta.read()){
-            
+        for (LivroBeans e : consulta.read()) {
+
             modelo.addRow(new Object[]{
-                
                 e.getId(),
                 e.getTitulo(),
                 e.getAutor(),
                 e.getGenero(),
                 e.getQtd()
-                
+
             });
-            
-            
+
         }
 
     }
@@ -86,6 +85,19 @@ public class consultarLivro extends javax.swing.JFrame {
                 "ID", "Titulo", "Autor", "Genero", "Quantidade"
             }
         ));
+        txtTabela.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtTabelaMouseClicked(evt);
+            }
+        });
+        txtTabela.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTabelaKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTabelaKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(txtTabela);
 
         btnConsulta.setText("Consultar Livros");
@@ -235,7 +247,7 @@ public class consultarLivro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaActionPerformed
-         readJtable();
+        readJtable();
 
     }//GEN-LAST:event_btnConsultaActionPerformed
 
@@ -251,10 +263,32 @@ public class consultarLivro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtQuantidadeActionPerformed
 
-    private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
-        if(txtTabela.getSelectedRow() != -1){
-            
+    private void txtTabelaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTabelaKeyReleased
+        if (txtTabela.getSelectedRow() != -1) {
+            txtNomeLivro.setText(txtTabela.getValueAt(txtTabela.getSelectedRow(), 1).toString());
+            txtNomeAutor.setText(txtTabela.getValueAt(txtTabela.getSelectedRow(), 2).toString());
+            txtGenero.setText(txtTabela.getValueAt(txtTabela.getSelectedRow(), 3).toString());
+            txtQuantidade.setText(txtTabela.getValueAt(txtTabela.getSelectedRow(), 4).toString());
         }
+
+    }//GEN-LAST:event_txtTabelaKeyReleased
+
+    private void txtTabelaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTabelaKeyPressed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_txtTabelaKeyPressed
+
+    private void txtTabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTabelaMouseClicked
+        if (txtTabela.getSelectedRow() != -1) {
+            txtNomeLivro.setText(txtTabela.getValueAt(txtTabela.getSelectedRow(), 1).toString());
+            txtNomeAutor.setText(txtTabela.getValueAt(txtTabela.getSelectedRow(), 2).toString());
+            txtGenero.setText(txtTabela.getValueAt(txtTabela.getSelectedRow(), 3).toString());
+            txtQuantidade.setText(txtTabela.getValueAt(txtTabela.getSelectedRow(), 4).toString());
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTabelaMouseClicked
+
+    private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
+
     }//GEN-LAST:event_btnSelecionarActionPerformed
 
     /**
