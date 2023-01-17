@@ -187,6 +187,8 @@ public class Login extends javax.swing.JFrame {
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Email ou senha incorretos");
+                txtEmail.setText("");
+                txtSenha.setText("");
             }
         }
 

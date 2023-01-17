@@ -6,6 +6,7 @@ import beans.Consulta;
 import beans.Data;
 import beans.LivroBeans;
 import beans.EmprestimoBeans;
+import beans.EmprestimoBeansPdf;
 import conexao.Conexao;
 import java.awt.HeadlessException;
 import java.sql.Connection;
@@ -16,8 +17,15 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
 
 /**
  *
@@ -194,6 +202,40 @@ public class BibliotecaDAO {
         }
     }
 
+        public void inserirEmprestimopdf(EmprestimoBeansPdf emprestimo) {
+        String sql = "INSERT INTO emprestimopdf(aluno, livro, adm, dataP, dataD, status) VALUES" + "(?, ?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+            stmt.setString(1, emprestimo.getAluno());
+            stmt.setString(2, emprestimo.getLivro());
+            stmt.setString(3, emprestimo.getAdm());
+            stmt.setString(4, emprestimo.getDataP());
+            stmt.setString(5, emprestimo.getDataD());
+            stmt.setString(6, emprestimo.getStatus());
+            stmt.execute();
+            JOptionPane.showMessageDialog(null, "Sucesso ao inserir dados em emprestimopdf!");
+        } catch (HeadlessException | SQLException e) {
+            System.out.println("Erro ao inserir Emprestimo: " + e);
+            JOptionPane.showMessageDialog(null, "Erro ao inserir dados em emprestimopdf!");
+        }
+    }
+        
+            public void updatestatusPdf(int id) {
+        String sql = "UPDATE `emprestimopdf` SET `status`=? WHERE `id`=?";
+        String status = "Finalizado";
+        try {
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+            stmt.setString(1, status);
+            stmt.setInt(2, id);
+            stmt.execute();
+            JOptionPane.showMessageDialog(null, "Sucesso ao Atualizar dados!");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao inserir dados!");
+        }
+    }
+            
+            
+        
     public void updateEmprestimo(int id_emprestimo) {
         String sql = "UPDATE `emprestimo` SET `status`='0' WHERE `id` = ?";
         try {
@@ -317,5 +359,25 @@ public class BibliotecaDAO {
             return null;
         }
         return emprestimos;
+    }
+    
+    public void report() {
+
+        String sql = "SELECT * FROM emprestimopdf";
+
+        try {
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            JasperReport relatorio = JasperCompileManager.compileReport("C:\\Users/alefe/OneDrive/Documentos/NetBeansProjects/Biblioteca/src/relatorio/PDF.jrxml");
+
+            JasperPrint print = JasperFillManager.fillReport(relatorio, new HashMap<>(), new JRResultSetDataSource(rs));
+
+            JasperExportManager.exportReportToPdfFile(print, "Relatorio_Emprestimo.pdf");
+            JOptionPane.showMessageDialog(null, "Relatório Salvo...");
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(null, "Report: " + erro);
+        }
+
     }
 }

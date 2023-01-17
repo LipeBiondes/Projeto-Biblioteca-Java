@@ -8,6 +8,7 @@ import beans.Adm;
 import beans.Aluno;
 import beans.Data;
 import beans.EmprestimoBeans;
+import beans.EmprestimoBeansPdf;
 import beans.LivroBeans;
 import beans.livroTableModel;
 import dao.BibliotecaDAO;
@@ -278,7 +279,7 @@ public class CriaEmprestimo extends javax.swing.JFrame {
                 int id = Integer.parseInt(txtID.getText());
                 int qtd = Integer.parseInt(txtQuantidade.getText());
                 bibliotecaDAO.updateQtdLivro(id, qtd);
-
+                EmprestimoBeansPdf emprestimoBeansPdf = new EmprestimoBeansPdf();
                 EmprestimoBeans emprestimo = new EmprestimoBeans();
                 
                 emprestimo.setId_aluno(aluno.getId());
@@ -286,8 +287,16 @@ public class CriaEmprestimo extends javax.swing.JFrame {
                 emprestimo.setId_adm(adm.getId());
                 emprestimo.setDataP(txtDataP.getText());
                 emprestimo.setDataD(txtDataD.getText());
-                             
                 
+                emprestimoBeansPdf.setAluno(aluno.getNome());
+                emprestimoBeansPdf.setLivro(txtTitulo.getText());
+                emprestimoBeansPdf.setAdm(adm.getLogin());
+                emprestimoBeansPdf.setDataP(txtDataP.getText());
+                emprestimoBeansPdf.setDataD(txtDataD.getText());
+                emprestimoBeansPdf.setStatus("Em aberto");
+                
+                             
+                bibliotecaDAO.inserirEmprestimopdf(emprestimoBeansPdf);
                 bibliotecaDAO.inserirEmprestimo(emprestimo);
 
                 jFormattedTextField1.setText("");

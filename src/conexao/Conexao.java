@@ -14,7 +14,7 @@ public class Conexao {
     public Connection getConexao() {
         try {
             Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/biblioteca",
+                    "jdbc:mysql://localhost:3306/bibliotecapdf",
                     "root",
                     "12345678");
             System.out.println("SUCESSO!");
