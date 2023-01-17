@@ -85,14 +85,13 @@ public class BibliotecaDAO {
             consulta.setNome_aluno(rsAluno.getString("nome"));
 
             //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
-            
-             PreparedStatement stmtLivro = this.conn.prepareStatement(sql_livro);
+            PreparedStatement stmtLivro = this.conn.prepareStatement(sql_livro);
             stmtLivro.setInt(1, id_livro);
             ResultSet rsLivro = stmtLivro.executeQuery();
 
             rsLivro.first();
             consulta.setTitulo(rsLivro.getString("titulo"));
-            
+
             return consulta;
         } catch (SQLException e) {
             System.out.println("Erro ao consultar livro OU aluno: " + e);
@@ -166,6 +165,19 @@ public class BibliotecaDAO {
         }
     }
 
+    public void updateEmprestimo(int id_emprestimo) {
+        String sql = "UPDATE `emprestimo` SET `status`='0' WHERE `id` = ?";
+        try {
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+            stmt.setInt(1, id_emprestimo);
+            stmt.execute();
+            JOptionPane.showMessageDialog(null, "Sucesso ao Atualizar dados!");
+        } catch (HeadlessException | SQLException e) {
+            System.out.println("Erro ao atualizar emprestimo: " + e);
+            JOptionPane.showMessageDialog(null, "Erro ao inserir dados!");
+        }
+    }
+
     public void inserirAdm(Adm adm) {
         String sql = "INSERT INTO adm(login, senha) VALUES" + "(?, ?)";
         try {
@@ -231,7 +243,7 @@ public class BibliotecaDAO {
 
     public List<EmprestimoBeans> read() {
 
-        String sql = "SELECT * FROM `emprestimo`";
+        String sql = "SELECT * FROM `emprestimo` WHERE `status`='1'";
 
         List<EmprestimoBeans> emprestimos = new ArrayList<>();
 

@@ -49,9 +49,8 @@ public class EmprestimoTableModel extends AbstractTableModel {
         return null;
     }
 
-    public void addRow(EmprestimoBeans e) {
-
-        this.dados.add(e);
+    public void atualizarRow(EmprestimoBeans e) {
+        
         this.fireTableDataChanged();
 
     }
