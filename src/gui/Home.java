@@ -1,17 +1,22 @@
 package gui;
+
+import dao.BibliotecaDAO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
 /**
  *
  * @author Alefe Filipe
  */
 public class Home extends javax.swing.JFrame {
+
     /**
      * Creates new form Home
      */
     public Home() {
         initComponents();
+        Home.this.setLocationRelativeTo(null);
     }
 
     /**
@@ -24,55 +29,111 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        btnLivro = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/fundo.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1366, 768));
+        setSize(new java.awt.Dimension(1200, 800));
         getContentPane().setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel2.setText("Biblioteca");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(270, 40, 78, 24);
+        btnLivro.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
+        btnLivro.setText("Livro");
+        btnLivro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLivroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnLivro);
+        btnLivro.setBounds(250, 220, 160, 25);
 
-        jButton1.setText("Cadastrar Livro");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(223, 171, 155, 22);
-
-        jButton2.setText("Cadastrar Aluno");
+        jButton2.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
+        jButton2.setText("Aluno");
+        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2);
-        jButton2.setBounds(223, 199, 155, 22);
+        jButton2.setBounds(250, 180, 160, 25);
 
-        jButton3.setText("Consultar Livros");
-        getContentPane().add(jButton3);
-        jButton3.setBounds(223, 227, 155, 22);
-
-        jButton4.setText("Pegar Livro Emprestado");
+        jButton4.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
+        jButton4.setText("Emprestimo");
+        jButton4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton4);
-        jButton4.setBounds(223, 255, 155, 22);
+        jButton4.setBounds(250, 260, 160, 25);
 
-        jButton5.setText("Devolver Livro");
-        getContentPane().add(jButton5);
-        jButton5.setBounds(223, 283, 155, 22);
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jMenu1.setText("Menu");
-        jMenuBar1.add(jMenu1);
+        jLabel2.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 24)); // NOI18N
+        jLabel2.setText("Biblioteca");
+        jPanel1.add(jLabel2);
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(270, 120, 120, 50);
 
-        setJMenuBar(jMenuBar1);
+        jButton7.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
+        jButton7.setText("Relatorio");
+        jButton7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton7);
+        jButton7.setBounds(250, 300, 160, 25);
 
-        pack();
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/fundo.jpg"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(-3, -4, 660, 480);
+
+        setSize(new java.awt.Dimension(667, 483));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
+        bibliotecaDAO.report();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        TelaAluno telaAluno = new TelaAluno();
+        telaAluno.setVisible(true);
+        
+        Home.this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLivroActionPerformed
+       Livro telaLivro = new Livro();
+       telaLivro.setVisible(true);
+       Home.this.setVisible(false);
+    }//GEN-LAST:event_btnLivroActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        Emprestimo emprestimo = new Emprestimo();
+        emprestimo.setVisible(true);
+        Home.this.setVisible(false);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,14 +175,13 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnLivro;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

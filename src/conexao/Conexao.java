@@ -2,6 +2,7 @@ package conexao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
@@ -9,18 +10,20 @@ import java.sql.Statement;
  * @author Alefe Filipe
  */
 public class Conexao {
+
     public Connection getConexao() {
         try {
             Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/biblioteca",
+                    "jdbc:mysql://localhost:3306/bibliotecapdf",
                     "root",
                     "12345678");
-            System.out.println("SUCESSO PORRA!");
+            System.out.println("SUCESSO!");
             Statement stmt = conn.createStatement();
             return conn;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Erro ao conectar: " + e.getMessage());
             return null;
         }
     }
 }
+//teste

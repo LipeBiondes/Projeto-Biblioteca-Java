@@ -4,8 +4,9 @@ package beans;
  * @author Alefe Filipe
  */
 public class Aluno {
-    private int id;
-    private String nome, endereco, telefone, sexo;
+
+    private int id, livros_pegados;
+    private String nome, endereco, telefone, cpf;
 
     public int getId() {
         return id;
@@ -13,6 +14,14 @@ public class Aluno {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getLivros_pegados() {
+        return livros_pegados;
+    }
+
+    public void setLivros_pegados(int livros_pegados) {
+        this.livros_pegados = livros_pegados;
     }
 
     public String getNome() {
@@ -39,12 +48,12 @@ public class Aluno {
         this.telefone = telefone;
     }
 
-    public String getSexo() {
-        return sexo;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
 }
